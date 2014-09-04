@@ -1,0 +1,14 @@
+{% load endless %}
+
+{% lazy_paginate profiles %}
+{% for profile in profiles %}
+<ul style="list-style-type:none">
+    <li style="float:left">{% include "inc/avatar.html" with profile=profile size=50 %}</li>
+    <li><strong><a href="{{ profile.get_absolute_url }}">{{ profile.name }}</a></strong></li>
+    <li>{{ profile.title.name }} at {{ profile.company.name }}</li>
+    <li>{{ profile.birthday|timesince }} old</li>
+    <li>{{ profile.address|linebreaks }}</li>
+</ul>
+{% endfor %}
+
+{% show_more %}

@@ -1,0 +1,9 @@
+varnish:
+  build: fig/services/varnish
+  command: start_lb.sh
+  environment:
+    WEB_1_NAME:
+    WEB_2_NAME:
+  ports:
+   - "8080:8080"
+

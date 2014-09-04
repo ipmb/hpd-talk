@@ -1,0 +1,17 @@
+memcached:
+  build: fig/services/memcached
+  command: memcached -u root -l 0.0.0.0 -m 512
+  ports:
+    - "11211:11211"
+web:
+  build: .
+  command: uwsgi --uwsgi-socket=:8080 --ini uwsgi.ini
+  environment:
+    DATABASE_URL:
+  links:
+    - memcached
+  ports:
+   - "8080:8080"
+   - "1717:1717"
+  volumes:
+   - .:/code

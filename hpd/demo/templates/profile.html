@@ -1,0 +1,16 @@
+<h1>
+    {% include "inc/avatar.html" with profile=profile size=50 %}
+    {{ profile.name }}
+</h1>
+<p><a href="{{ profile.website }}">{{ profile.website }}</a></p>
+{{ profile.bio|linebreaks }}
+
+<h2>Shares Birthday With:</h2>
+<ul>
+    {% for other in profile.shared_birthday %}
+    <li>
+        <a href="{{ other.get_absolute_url }}">{{ other.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+

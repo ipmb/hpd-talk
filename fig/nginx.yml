@@ -1,0 +1,9 @@
+nginx:
+  build: fig/services/nginx
+  command: start.sh
+  environment:
+    WEB_1_NAME:
+    WEB_2_NAME:
+  ports:
+   - "8080:8080"
+
